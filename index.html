@@ -233,28 +233,39 @@
   .tl .time{font-family:"Fraunces",serif;font-size:12px;letter-spacing:.1em;color:var(--walnut);text-transform:uppercase;margin-bottom:2px}
   .tl .desc{font-size:14.5px;color:var(--ink)}
 
-  /* ---------- BACK BAR ---------- */
-  .back-bar{
-    position:sticky;top:0;z-index:100;
-    display:flex;align-items:center;
-    padding:10px 0;
-    background:linear-gradient(180deg,var(--cream) 70%,transparent);
-    pointer-events:none;
-  }
-  .back-btn{
-    pointer-events:auto;
+  /* step card */
+  .step-tag{
     display:inline-flex;align-items:center;gap:8px;
-    text-decoration:none;
-    font-family:"Fraunces",serif;font-size:13px;letter-spacing:.12em;
-    color:var(--walnut-deep);
-    background:var(--paper);
-    border:1px solid var(--line);border-radius:30px;
-    padding:7px 16px 7px 12px;
-    box-shadow:0 4px 14px -8px rgba(60,42,20,.35);
-    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    font-family:"Fraunces",serif;font-size:12px;letter-spacing:.16em;
+    color:#fff;background:var(--forest);border-radius:20px;
+    padding:4px 14px;text-transform:uppercase;margin-bottom:4px;
   }
-  .back-btn svg{width:15px;height:15px;stroke:var(--walnut);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-  .back-btn:hover{transform:translateX(-2px);box-shadow:0 6px 18px -8px rgba(60,42,20,.45);border-color:var(--walnut)}
+  .step-title{font-family:"Gowun Batang",serif;font-weight:700;font-size:17px;color:var(--ink);margin:2px 0 12px}
+  ol.steps{list-style:none;counter-reset:step;margin-top:4px}
+  ol.steps>li{
+    counter-increment:step;position:relative;padding:9px 0 9px 34px;
+    border-bottom:1px dashed var(--line);font-size:14.5px;color:var(--ink);
+  }
+  ol.steps>li:last-child{border-bottom:0}
+  ol.steps>li::before{
+    content:counter(step);position:absolute;left:0;top:9px;
+    width:22px;height:22px;border-radius:50%;background:#F2EAD8;
+    border:1px solid var(--line);color:var(--walnut-deep);
+    font-family:"Fraunces",serif;font-size:12px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.steps>li b{color:var(--walnut-deep)}
+  .sub-steps{list-style:none;margin:6px 0 0}
+  .sub-steps>li{position:relative;padding:5px 0 5px 20px;font-size:14px;color:var(--ink)}
+  .sub-steps>li::before{content:"–";position:absolute;left:0;color:var(--walnut)}
+  .tip{
+    background:#EAF0EC;border:1px solid #CFE0D6;border-left:3px solid var(--forest);
+    border-radius:0 10px 10px 0;padding:10px 14px;margin:8px 0 4px;font-size:13px;color:var(--soft-ink)
+  }
+  .tip b{color:var(--forest)}
+  .step-block{padding:16px 0;border-bottom:1px dashed var(--line)}
+  .step-block:last-child{border-bottom:0}
+  .step-block:first-child{padding-top:0}
 
   .footer{text-align:center;padding:48px 0 0;color:var(--muted)}
   .footer .mark{font-family:"Fraunces",serif;letter-spacing:.3em;color:var(--walnut);font-size:13px}
@@ -296,22 +307,11 @@
 
 <div class="wrap">
 
-  <div class="back-bar">
-    <a class="back-btn" href="index.html">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      메인으로
-    </a>
-  </div>
-
   <!-- HERO -->
   <header class="hero">
     <div class="eyebrow">Cleaning Guide</div>
     <h1>WALNUT HOUSE</h1>
     <div class="ko-title">청소 가이드</div>
-    <p class="tagline">
-      Every guest deserves the home they were promised.<br>Thank you for making that true.
-      <span class="kr">— 다음 손님을 위한 정성 —</span>
-    </p>
     <div class="dot-rule"><span></span><b></b><span></span></div>
   </header>
 
@@ -328,189 +328,347 @@
     <div class="row"><div class="k">주소</div><div class="v">서울특별시 종로구 율곡로 22가길 7, 401호</div></div>
   </section>
 
-  <!-- 청소 타임라인 -->
+  <!-- Step 구간 안내 -->
+  <div class="dot-rule" style="margin:8px 0 4px">
+    <span></span><b></b><span></span>
+  </div>
+  <p style="text-align:center;font-family:'Fraunces',serif;font-style:italic;font-size:14px;letter-spacing:.06em;color:var(--walnut-deep);margin-bottom:8px">
+    아래 스텝을 순서대로 진행
+  </p>
+
+  <!-- Step 0 -->
+  <section class="card" style="animation-delay:.08s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 2l1 4h10l1-4"/><path d="M5 6h14l-1.5 15h-11z"/><path d="M9 10v6M12 10v6M15 10v6"/></svg></div>
+      <div class="t"><span class="num">Step 0</span><h2>물품 구매</h2></div>
+    </div>
+    <div class="divider"></div>
+    <p class="ap-desc">동대문 다이소에서 필요한 물품 구매</p>
+    <ul class="clean">
+      <li>바닥 물걸레질에 사용할 밀대 걸레 구매</li>
+      <li>종이컵 구매</li>
+      <li>휴지 묶음 구매</li>
+    </ul>
+  </section>
+
+  <!-- Step 1 -->
   <section class="card" style="animation-delay:.1s">
     <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-      <div class="t"><span class="num">Timeline · 02</span><h2>청소 진행 순서</h2></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div class="t"><span class="num">Step 1</span><h2>체크아웃 확인 · 출입</h2></div>
     </div>
     <div class="divider"></div>
-    <ul class="tl">
-      <li><div class="time">Step 1</div><div class="desc">체크아웃 확인 (11:00 이후) 후 출입 — 공동현관 <b>2345*</b> → 4층 → 401호 도어락</div></li>
-      <li><div class="time">Step 2</div><div class="desc">전체 환기 — 창문 개방, 냄새·이상 유무 확인 및 사진 기록</div></li>
-      <li><div class="time">Step 3</div><div class="desc">쓰레기 및 사용한 침구·타월 먼저 수거</div></li>
-      <li><div class="time">Step 4</div><div class="desc">공간별 청소 진행 (침실 → 욕실 → 주방 → 거실 순 권장)</div></li>
-      <li><div class="time">Step 5</div><div class="desc">비품·소모품 보충 및 세팅</div></li>
-      <li><div class="time">Step 6</div><div class="desc">쓰레기 배출 및 정리</div></li>
-      <li><div class="time">Step 7</div><div class="desc">최종 점검 후 완료 사진 촬영 및 전송 (체크인 16:00 전 완료)</div></li>
-    </ul>
-    <div class="note warn">⚠️ 다음 체크인이 당일 있는 경우, 반드시 16:00 이전에 모든 절차를 완료해 주세요.</div>
+    <p>체크아웃 확인(11:00)에 현관문 앞에서 벨을 누르고 반응이 없으면 출입합니다.</p>
   </section>
 
-  <!-- 공간별 체크리스트: 침실 -->
-  <section class="card" style="animation-delay:.15s">
-    <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="1"/><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v2M21 18v2"/></svg></div>
-      <div class="t"><span class="num">Bedroom · 03</span><h2>침실 청소 체크리스트</h2></div>
-    </div>
-    <div class="divider"></div>
-    <ul class="check-list">
-      <li>사용한 침구(이불커버·베개커버·시트) 전부 수거 후 새 침구로 교체</li>
-      <li>매트리스·베개 정렬 확인, 얼룩·손상 여부 점검</li>
-      <li>협탁·무드등 먼지 제거, 무드등 작동 확인</li>
-      <li>바닥 청소기 및 물걸레질</li>
-      <li>창틀·창문 먼지 제거, 커튼 정리</li>
-      <li>옷장·서랍 내부 확인 (손님 유실물 유무)</li>
-      <li>콘센트·리모컨(에어컨·실링팬) 위치 정리 및 작동 확인</li>
-    </ul>
-  </section>
-
-  <!-- 욕실 -->
-  <section class="card" style="animation-delay:.18s">
-    <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3z"/><path d="M6 12V6a2 2 0 0 1 3-1.7"/></svg></div>
-      <div class="t"><span class="num">Bathroom · 04</span><h2>욕실 청소 체크리스트</h2></div>
-    </div>
-    <div class="divider"></div>
-    <ul class="check-list">
-      <li>변기 안팎 · 시트 소독 및 물기 제거</li>
-      <li>세면대·거울 물때 제거 및 광택</li>
-      <li>욕조·샤워부스 곰팡이·물때 제거, 배수구 머리카락 제거</li>
-      <li>샤워커튼·욕조 덮개 정리, 오염 시 교체</li>
-      <li><b>환풍기가 없는 구조</b> — 청소 후 창문/문을 살짝 열어 환기 상태로 마무리</li>
-      <li>바닥 물기 제거 및 소독</li>
-      <li>사용한 수건 전량 수거, 새 타월로 교체 (1인당 페이스 타월 2개·바스 타월 1개 기준)</li>
-      <li>휴지·어메니티 잔량 확인 후 보충</li>
-      <li>욕실 쓰레기통 비우고 새 비닐(10L) 씌우기</li>
-    </ul>
-  </section>
-
-  <!-- 주방 -->
-  <section class="card" style="animation-delay:.2s">
-    <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v8M4 3v4a2 2 0 0 0 4 0V3"/><path d="M18 3v18M14 9c0-3 2-6 4-6v18"/></svg></div>
-      <div class="t"><span class="num">Kitchen · 05</span><h2>주방 청소 체크리스트</h2></div>
-    </div>
-    <div class="divider"></div>
-    <ul class="check-list">
-      <li>싱크대 내부·수전 물때 제거, 배수구 청소</li>
-      <li>사용한 식기·조리도구 설거지 후 제자리 정리</li>
-      <li>가스레인지 표면 및 밸브 주변 기름때 제거, <b>밸브 잠김 상태</b> 확인</li>
-      <li>전자레인지 내부 청소, 냄새 확인</li>
-      <li>전기포트 내부 스케일 확인 및 헹굼</li>
-      <li>냉장고 내부 확인 — 유통기한 지난 음식물 폐기, 선반 정리</li>
-      <li>냉장실 인원당 생수 1병 보충</li>
-      <li>티 스테이션 서랍 — 티백·커피 잔량 확인 후 보충, 종이컵 보충</li>
-      <li>세탁실 세제 잔량 확인 및 보충</li>
-      <li>식탁·조리대 표면 소독 및 닦기</li>
-      <li>바닥 청소기 및 물걸레질</li>
-    </ul>
-  </section>
-
-  <!-- 거실/공용 -->
-  <section class="card" style="animation-delay:.23s">
-    <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg></div>
-      <div class="t"><span class="num">Living Room · 06</span><h2>거실 · 공용공간 체크리스트</h2></div>
-    </div>
-    <div class="divider"></div>
-    <ul class="check-list">
-      <li>TV·리모컨 작동 확인, 배터리 잔량 점검</li>
-      <li>소파·쿠션 정리, 먼지 제거</li>
-      <li>바닥 전체 청소기 및 물걸레질</li>
-      <li>현관 신발장 정리 — 일회용 슬리퍼 잔량 확인 및 보충</li>
-      <li>웰컴 콘솔 정리 — 어메니티·과자 보충, QR 카드 스탠드 정위치 확인</li>
-      <li>창문·베란다(있을 시) 정리</li>
-      <li>공동현관·복도 쪽 문 작동 확인 (왼쪽 문 사용 여부)</li>
-      <li>전체 조명·콘센트 작동 확인</li>
-    </ul>
-  </section>
-
-  <!-- 세탁물·비품 교체 기준 -->
-  <section class="card" style="animation-delay:.26s">
+  <!-- Step 2 -->
+  <section class="card" style="animation-delay:.14s">
     <div class="card-head">
       <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v16"/></svg></div>
-      <div class="t"><span class="num">Supplies · 07</span><h2>세탁물 · 비품 교체 기준</h2></div>
+      <div class="t"><span class="num">Step 2</span><h2>수건 세탁 · 건조</h2></div>
     </div>
     <div class="divider"></div>
-    <p class="subhead" style="margin-top:0">🛏 침구 · 타월</p>
-    <table class="supply">
-      <tr><th>품목</th><th>기준</th><th>비고</th></tr>
-      <tr><td>이불커버·베개커버·시트</td><td class="num">전체 교체</td><td>매 예약마다 세탁된 새 세트로 교체</td></tr>
-      <tr><td>페이스 타월</td><td class="num">1인당 2개</td><td>재사용 흔적 있으면 전량 교체</td></tr>
-      <tr><td>바스 타월</td><td class="num">1인당 1개</td><td>동일</td></tr>
-    </table>
-    <p class="subhead">🧴 어메니티 · 소모품</p>
-    <table class="supply">
-      <tr><th>품목</th><th>위치</th><th>기준</th></tr>
-      <tr><td>어메니티(샴푸·바디워시 등)</td><td>현관 콘솔</td><td>잔량 50% 이하 시 보충</td></tr>
-      <tr><td>일회용 슬리퍼</td><td>신발장</td><td>인원수만큼 새 슬리퍼 비치</td></tr>
-      <tr><td>티백 · 커피</td><td>티 스테이션 서랍</td><td>각 종류 최소 2인분 이상 유지</td></tr>
-      <tr><td>생수</td><td>냉장실</td><td>인원당 1병</td></tr>
-      <tr><td>휴지</td><td>욕실</td><td>여분 1롤 이상 비치</td></tr>
-      <tr><td>세탁세제</td><td>세탁실</td><td>잔량 확인 후 부족 시 보충</td></tr>
-      <tr><td>과자</td><td>웰컴 콘솔 상단</td><td>소정량 보충</td></tr>
-    </table>
-    <div class="note">비품 재고가 부족한 경우 청소 완료 전 호스트에게 미리 연락해 주세요.</div>
+
+    <div class="step-block">
+      <div class="step-tag">수건 회수</div>
+      <p class="ap-desc">모든 공간을 훑어보고 사용된 수건을 회수합니다. 회수한 수건과 화장실 앞 라탄바구니에 모아놓은 수건들을 세탁실 앞으로 들고 옵니다.</p>
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">세탁</div>
+      <p class="ap-desc">수건을 넣고 돌립니다.</p>
+      <div class="tip"><b>참고</b> 옆에 비치된 세제 사용, 세탁 모드는 <b>AI 맞춤 추천</b> 상태에서 탈수만 최고로 조절</div>
+      <div class="tip"><b>참고</b> 청소 도중 세탁이 끝나면 건조기 돌리기</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">건조</div>
+      <p class="ap-desc">AI 맞춤 추천에서 건조 강도 최대로 (두꺼워도 뽀송하게)</p>
+      <p class="ap-desc">수건 건조 이후에 건조기 필터 청소 (청소기로 빨아당기기)</p>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <img class="guide-img" src="img/1.jpg" alt="건조기 필터 청소 1" style="width:50%;border-radius:11px">
+        <img class="guide-img" src="img/2.jpg" alt="건조기 필터 청소 2" style="width:50%;border-radius:11px">
+      </div>
+    </div>
   </section>
 
-  <!-- 쓰레기 배출 및 정리 -->
+  <!-- Step 3 -->
+  <section class="card" style="animation-delay:.18s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="1"/><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v2M21 18v2"/></svg></div>
+      <div class="t"><span class="num">Step 3</span><h2>이불 세탁</h2></div>
+    </div>
+    <div class="divider"></div>
+    <div class="tip"><b>참고</b> 침구류는 매트리스 시트, 이불 시트, 베개 시트로 감싸고 있으며, 이것만 벗겨서 세탁합니다. (매트리스 위 방수커버는 그대로 유지)</div>
+    <div class="tip"><b>참고</b> 세탁기 돌려놓고 숙소로 돌아와서 청소, 시간 되면 다시 건조기 돌려놓고 숙소로 돌아와서 청소</div>
+
+    <div class="step-block">
+      <div class="step-tag">시트 벗기기</div>
+      <ul class="sub-steps">
+        <li><b>베개 시트</b> — 베개를 눌러서 부피를 줄인 다음 벗기면 편리</li>
+        <li><b>이불 시트</b> — 이불 아래쪽 지퍼를 열어서 끝부분에 묶인 끈을 풀면서 벗긴다</li>
+        <li><b>매트리스 시트</b> — 매트리스를 살짝 들어서 앞으로 당긴 다음, 모서리에 걸친 부분을 들어내서 벗긴다</li>
+      </ul>
+      <div class="tip"><b>참고</b> 지퍼는 고장 나지 않게 펴서 열기</div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">이불 가방 수납</div>
+      <p class="ap-desc">싱크대 중앙 상부장에 구비된 이불가방 2개를 꺼내서 각각 큰방 시트, 작은방 2개 시트를 나눠 담는다.</p>
+      <div class="tip"><b>참고</b> 지퍼 펴서 열고 닫기 — 고장 잘 남</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <img class="guide-img" src="img/3.jpg" alt="이불 가방 수납 3" style="width:50%;border-radius:11px">
+        <img class="guide-img" src="img/4.jpg" alt="이불 가방 수납 4" style="width:50%;border-radius:11px">
+      </div>
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">세탁</div>
+      <p class="ap-desc">주변 세탁방에서 27kg 이상 크기의 세탁기에 모두 넣고 돌리기</p>
+      <div class="tip"><b>참고</b> 세탁 완료 예상 시간보다 +10분 이후에 와야 시간이 맞음</div>
+      <img class="guide-img" src="img/5.jpg" alt="세탁기" style="margin-top:10px;border-radius:11px;width:25%">
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">건조</div>
+      <p class="ap-desc">36분 고온으로 건조기를 돌린다.</p>
+      <div class="tip"><b>참고</b> 기본 30분에 +3분씩 2회 추가</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <img class="guide-img" src="img/6.jpg" alt="건조기 6" style="width:calc(33.33% - 6px);border-radius:11px">
+        <img class="guide-img" src="img/7.jpg" alt="건조기 7" style="width:calc(33.33% - 6px);border-radius:11px">
+        <img class="guide-img" src="img/8.jpg" alt="건조기 8" style="width:calc(33.33% - 6px);border-radius:11px">
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="card" style="animation-delay:.2s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M9 4H4v5M20 15v5h-5"/></svg></div>
+      <div class="t"><span class="num">Step 4</span><h2>먼지 털기</h2></div>
+    </div>
+    <div class="divider"></div>
+    <p>세탁실 왼쪽에 구비된 먼지털이로 각종 가구 위에 먼지를 턴다 (주로 침실 위주).</p>
+    <img class="guide-img" src="img/9.jpg" alt="먼지 털기" style="margin-top:10px;border-radius:11px">
+  </section>
+
+  <!-- Step 5 -->
+  <section class="card" style="animation-delay:.24s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3z"/><path d="M6 12V6a2 2 0 0 1 3-1.7"/></svg></div>
+      <div class="t"><span class="num">Step 5</span><h2>화장실 청소</h2></div>
+    </div>
+    <div class="divider"></div>
+    <p class="ap-desc">먼지가 가라앉는 동안 화장실을 청소한다.</p>
+
+    <div class="step-block">
+      <div class="step-tag">도구 확보</div>
+      <p class="ap-desc">세탁실 왼쪽에 있는 스퀴지, 청소솔, 회색 극세사 걸레를 확보한다.</p>
+      <img class="guide-img" src="img/10.jpg" alt="청소 도구" style="margin-top:10px;border-radius:11px">
+    </div>
+
+    <div class="step-block">
+      <div class="step-tag">화장실 청소</div>
+      <ol class="steps">
+        <li>변기 옆 휴지통과 휴지걸이에 걸려있는 휴지를 화장실 밖으로 뺀다.</li>
+        <li>선반들에 있는 물건들을 전부 바닥에 내려놓는다.
+          <div class="tip">샤워젤, 컨디셔너, 바디워시, 핸드워시, 규조토 칫솔꽂이</div>
+        </li>
+        <li>회색 극세사 걸레로 샤워기 물을 뿌려가며 욕조와 선반을 닦는다.
+          <div class="tip">화장실 락스 청소는 시간이 부족해서 자주 하지는 않음</div>
+        </li>
+        <li>청소솔로 바닥 타일과 변기에 샤워기로 물 뿌리면서 박박 문지른다.</li>
+        <li>샤워젤, 컨디셔너, 바디워시, 핸드워시를 세면대에서 극세사 걸레로 미끄러운 비누기가 남지 않도록 겉부분을 닦는다.</li>
+        <li>스퀴지로 선반과 욕조의 물기를 제거하고, 샤워젤·컨디셔너·바디워시·핸드워시를 원래 위치로 올려놓는다.</li>
+        <li>바닥 타일에 머리카락이 남지 않는지 육안으로 확인하면서 물로 한 번 더 바닥을 쓸어내린다.</li>
+        <li>변기와 바닥 타일의 물기도 스퀴지로 제거한다.
+          <div class="tip">완벽히 제거할 필요 없음. 닿는 부분만 제거해도 물기가 사라져서 나머지 부분은 빨리 건조됨</div>
+        </li>
+        <li>사진과 같이 샤워커튼을 정리한다.
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <img class="guide-img" src="img/21.jpg" alt="샤워커튼 정리 21" style="width:calc(33.33% - 6px);border-radius:11px">
+            <img class="guide-img" src="img/22.jpg" alt="샤워커튼 정리 22" style="width:calc(33.33% - 6px);border-radius:11px">
+            <img class="guide-img" src="img/23.jpg" alt="샤워커튼 정리 23" style="width:calc(33.33% - 6px);border-radius:11px">
+          </div>
+        </li>
+        <li>욕실 수납장에 사진과 같이 채워 넣는다.
+          <img class="guide-img" src="img/11.jpg" alt="욕실 수납장 정리" style="margin-top:10px;border-radius:11px;width:50%">
+        </li>
+        <li>화장실 청소 마무리 후 휴지걸이에 걸려있던 휴지가 절반 이상 남아있다면 삼각접기를 하여 휴지걸이에 다시 걸쳐놓는다.
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <img class="guide-img" src="img/12.jpg" alt="휴지 삼각접기 12" style="width:calc(33.33% - 6px);border-radius:11px">
+            <img class="guide-img" src="img/13.jpg" alt="휴지 삼각접기 13" style="width:calc(33.33% - 6px);border-radius:11px">
+            <img class="guide-img" src="img/14.jpg" alt="휴지 삼각접기 14" style="width:calc(33.33% - 6px);border-radius:11px">
+          </div>
+        </li>
+        <li>작은 화장실도 동일하게 진행한다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Step 6 -->
+  <section class="card" style="animation-delay:.26s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 20h8M12 17v3"/></svg></div>
+      <div class="t"><span class="num">Step 6</span><h2>거실 청소</h2></div>
+    </div>
+    <div class="divider"></div>
+    <div class="tip"><b>참고</b> 사용하던 회색 극세사 걸레는 중간중간에 한 번씩 화장실이나 싱크대에서 손빨래로 헹궈주는 게 좋음</div>
+
+    <div class="step-block">
+      <ol class="steps">
+        <li>식탁 테이블 위에 화병과 휴대폰 거치대는 옆 수납장 위로 잠시 이동
+          <img class="guide-img" src="img/15.jpg" alt="화병·거치대 이동 위치" style="margin-top:10px;border-radius:11px">
+        </li>
+        <li>식탁 테이블과 의자 닦기</li>
+        <li>회색 극세사 걸레로 테이블과 의자를 닦고 의자를 모두 올린다.
+          <div class="photo-slot"><img class="guide-img" src="" alt="테이블·의자 정리"></div>
+        </li>
+        <li>청소기로 테이블 아래의 카펫을 청소한다.
+          <div class="tip">청소기는 거실 왼쪽 구석에 있고, 항상 기본 세기인 중간 세기로</div>
+        </li>
+        <li>카펫 끝쪽 겉부분 아래도 살짝 들어서 청소기를 돌린다.</li>
+        <li>이어서 거실의 모든 바닥과 화장실 앞을 청소기로 돌린다.</li>
+        <li>주방과 화장실의 발매트 총 3개를 청소기로 밀고 거실 왼쪽 공간에 청소 끝날 때까지 모아놓는다.
+          <div class="tip"><b>참고</b> 청소기 돌리는 김에 모든 공간 바닥을 다 돌려버려도 좋음. 사용하지 않을 때는 충전독에 꽂아놓기.</div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Step 7 -->
+  <section class="card" style="animation-delay:.28s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="7" rx="1"/><path d="M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><path d="M3 18v2M21 18v2"/></svg></div>
+      <div class="t"><span class="num">Step 7</span><h2>방 청소</h2></div>
+    </div>
+    <div class="divider"></div>
+    <div class="step-block">
+      <ol class="steps">
+        <li>모든 방의 바닥을 청소기로 밀고, 침대 아래 구석진 곳에 뭉친 먼지는 세탁실에 있는 정전기 청소포 밀대로 긁어낸다.</li>
+        <li>세탁·건조 완료된 시트를 다시 매트리스와 침구류에 씌운다.
+          <div class="tip"><b>참고</b> 이불 시트 씌우는 방법은 링크 참고 — <a href="https://youtu.be/9Xxm8z9n65s?si=cgNXjnsHY4Y0sCm-" target="_blank" rel="noopener" style="color:var(--forest);text-decoration:underline">영상 보기</a></div>
+          <div class="tip"><b>참고</b> 베개 커버는 베개를 누른 다음 씌우면 부피가 작아져서 잘 들어감. 커버 끝부분 덮개까지 덮는 것 필수.</div>
+          <div class="tip"><b>참고</b> 모든 시트는 씌우고 나서 돌돌이로 먼지 제거 해줘야 됨.</div>
+        </li>
+        <li>시트를 모두 씌우고 나면 사진과 같이 쿠션과 배드러너를 올리고 마무리한다.
+          <img class="guide-img" src="img/16.jpg" alt="쿠션·배드러너 세팅" style="margin-top:10px;border-radius:11px">
+        </li>
+        <li>커튼은 흰색 쉬폰커튼과 암막커튼 둘 다 치는데, 암막커튼은 적당한 주름 균형을 맞춰야 됨.</li>
+        <li>사진과 같이 무드등을 켜고 불을 끄고 마무리한다.
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <img class="guide-img" src="img/17.jpg" alt="무드등 세팅 17" style="width:calc(50% - 4px);border-radius:11px">
+            <img class="guide-img" src="img/18.jpg" alt="무드등 세팅 18" style="width:calc(50% - 4px);border-radius:11px">
+            <img class="guide-img" src="img/19.jpg" alt="무드등 세팅 19" style="width:calc(50% - 4px);border-radius:11px">
+            <img class="guide-img" src="img/20.jpg" alt="무드등 세팅 20" style="width:calc(50% - 4px);border-radius:11px">
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Step 8 -->
   <section class="card" style="animation-delay:.3s">
     <div class="card-head">
       <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/><path d="M10 11v6M14 11v6"/></svg></div>
-      <div class="t"><span class="num">Garbage · 08</span><h2>쓰레기 배출 및 정리</h2></div>
+      <div class="t"><span class="num">Step 8</span><h2>쓰레기 처리</h2></div>
     </div>
     <div class="divider"></div>
-    <div class="trash">
-      <div class="bin b1"><div class="top"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 4 4 4 7a4 4 0 1 1-8 0c0-1 .5-2 1-3"/></svg>일반 쓰레기</div><div class="body">50L 일반 비닐봉투 사용. 가득 찼으면 묶어서 배출용으로 빼두고, 통에는 새 봉투를 씌워둡니다.</div></div>
-      <div class="bin b2"><div class="top"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 11H6z"/><path d="M9 8V5h6v3"/></svg>음식물 쓰레기</div><div class="body">봉투를 묶어 냉동실에 보관 후 10L 비닐봉투로 교체. 잔반은 반드시 물기를 제거해 주세요.</div></div>
-      <div class="bin b3"><div class="top"><svg viewBox="0 0 24 24"><path d="M8 4h8M10 4v4l-3 11h10L14 8V4"/></svg>재활용</div><div class="body">플라스틱·캔·병·금속류는 50L 일반 비닐에 담아 별도 배출 준비.</div></div>
-      <div class="bin b4"><div class="top"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="11" rx="1"/><path d="M4 11h16"/></svg>배출 장소·시기</div><div class="body">배출 요일: <b style="color:var(--walnut-deep)">일~금</b> (토요일 제외) · 19:00~21:00<br>장소: 1층 공동현관문 앞</div></div>
+    <div class="step-block">
+      <div class="step-tag">재활용 쓰레기</div>
+      <p class="ap-desc">재활용 쓰레기통에서 꺼냈을 때 특별히 분류할 일반 쓰레기가 보이지 않으면 그대로 묶어서 배출한다.</p>
     </div>
-    <div class="divider"></div>
-    <ul class="check-list">
-      <li>모든 실내 쓰레기통(거실·주방·욕실) 비우고 새 비닐 씌우기</li>
-      <li>수거한 일반·재활용 쓰레기는 배출 시간에 맞춰 1층 공동현관 앞으로 이동</li>
-      <li>음식물 쓰레기는 배출 전까지 냉동실 보관 원칙 준수</li>
-      <li>배출 완료 후 통 상태 사진 촬영</li>
-    </ul>
-    <div class="note warn">⚠️ 분리수거 기준을 지키지 않을 경우 호스트에게 벌금이 부과될 수 있으니 반드시 확인해 주세요.</div>
+    <div class="step-block">
+      <div class="step-tag">일반 쓰레기</div>
+      <p class="ap-desc">일반 쓰레기통에서 쓰레기를 꺼내서 전자레인지 아래 서랍에 있는 50리터 종량제 봉투에 넣는다.</p>
+    </div>
+    <div class="step-block">
+      <div class="step-tag">화장실 쓰레기</div>
+      <p class="ap-desc">화장실 쓰레기통에서 쓰레기를 꺼내서 일반 쓰레기 종량제 봉투에 같이 넣어서 함께 배출한다.</p>
+    </div>
+    <div class="step-block">
+      <div class="step-tag">음식물 쓰레기</div>
+      <p class="ap-desc">싱크대의 음식물 쓰레기통에서 꺼내서 전자레인지 아래의 10리터 음식물 종량제 봉투에 넣어서 배출한다.</p>
+    </div>
   </section>
 
-  <!-- 최종 점검 -->
+  <!-- Step 9 -->
+  <section class="card" style="animation-delay:.32s">
+    <div class="card-head">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v8M4 3v4a2 2 0 0 0 4 0V3"/><path d="M18 3v18M14 9c0-3 2-6 4-6v18"/></svg></div>
+      <div class="t"><span class="num">Step 9</span><h2>주방 청소</h2></div>
+    </div>
+    <div class="divider"></div>
+    <div class="step-block">
+      <ol class="steps">
+        <li>설거지 후 접시는 싱크볼 옆의 건조대에 거치한다.</li>
+        <li>컵도 설거지 후 건조대에 올려놓는다 (접시 거치대 옆 공간).</li>
+        <li>나머지 그릇은 설거지 후 싱크대 왼쪽 하부장에 있는 키친타올로 물기를 닦고 왼쪽 상부장에 수납한다.</li>
+        <li>수저나 조리도구는 설거지하고 물기를 닦아 가스레인지 아래 서랍에 수납한다.</li>
+        <li>싱크볼 배수구를 청소한다.
+          <div class="tip">음식물 찌꺼기는 하나도 남김없이 음식물 쓰레기 봉투에 넣고, 걸러지지 않는 찌꺼기는 키친타올로 닦아내고 마무리</div>
+        </li>
+        <li>싱크대 위 오물들을 닦고 가스레인지 위도 닦는다.</li>
+        <li>전기포트를 헹구고 사진과 같이 뒤집어놓는다.
+          <div class="tip">뒤집어 놓아야 세척했다는 신뢰를 줌</div>
+          <img class="guide-img" src="img/24.jpg" alt="전기포트 뒤집어 놓기" style="margin-top:10px;border-radius:11px">
+        </li>
+        <li>냉장고 내부 남아있는 음식을 정리하고, 인원수만큼 오른쪽 싱크대 상부장에서 생수를 꺼내서 배치한다.</li>
+        <li>냉장고 옆 나무로봇 서랍에 종이컵을 보충한다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Step 10 -->
   <section class="card" style="animation-delay:.34s">
     <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-5"/><circle cx="12" cy="12" r="9"/></svg></div>
-      <div class="t"><span class="num">Final Check · 09</span><h2>최종 점검</h2></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 4v16"/></svg></div>
+      <div class="t"><span class="num">Step 10</span><h2>어메니티 보충</h2></div>
     </div>
     <div class="divider"></div>
-    <ul class="check-list">
-      <li>모든 조명·가전(에어컨·TV·보일러·실링팬) 정상 작동 확인</li>
-      <li>도어락·공동현관 비밀번호 정상 작동 확인</li>
-      <li>실내 냄새 확인 — 필요 시 탈취 및 환기</li>
-      <li>파손·고장·분실 항목 발견 시 즉시 호스트에게 사진과 함께 공유</li>
-      <li>전체 창문·문 잠금 상태 확인 후 퇴실</li>
+    <ul class="clean">
+      <li>아래 사진과 같이 어메니티를 보충하고, 선반 위쪽에 약과는 싱크대 중앙 상부장에서 꺼내서 인원수당 2개씩 배치한다.</li>
+      <li>어메니티는 세탁실의 물류창고에서 종류별로 꺼내서 넉넉하게 배치한다.</li>
+      <li>신발장에 인원수만큼 슬리퍼를 배치한다.</li>
+      <li>사각 티슈 케이스에 티슈를 채워 넣는다. <small>(싱크대 오른쪽 상부장 맨 윗칸에 있음 — 동물모양 박스)</small>
+        <div class="photo-slot"><img class="guide-img" src="img/25.jpg" alt="사각 티슈 케이스 보충"></div>
+      </li>
     </ul>
   </section>
 
-  <!-- 완료 후 사진 촬영 안내 -->
-  <section class="card" style="animation-delay:.38s">
+  <!-- Step 11 -->
+  <section class="card" style="animation-delay:.36s">
     <div class="card-head">
-      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></svg></div>
-      <div class="t"><span class="num">Photo Report · 10</span><h2>완료 후 사진 촬영 안내</h2></div>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-5"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <div class="t"><span class="num">Step 11</span><h2>마무리</h2></div>
     </div>
     <div class="divider"></div>
-    <p>청소 완료 후 아래 항목을 촬영하여 호스트에게 전송해 주세요. 다음 손님의 체크인 전 상태를 확인하는 용도로 사용됩니다.</p>
-    <ul class="check-list">
-      <li>침실 전체 (침구 세팅 후)</li>
-      <li>욕실 전체 (수건·어메니티 세팅 후)</li>
-      <li>주방 전체 (싱크대·조리대 포함)</li>
-      <li>거실 전체</li>
-      <li>냉장고 내부 (생수 보충 확인)</li>
-      <li>쓰레기통 상태 (새 비닐 세팅 확인)</li>
-      <li>파손·이상 발견 부위 (있는 경우만)</li>
-    </ul>
-    <div class="note">사진은 카카오톡(pmzy)으로 전송해 주세요. 전송 완료 시점을 청소 종료 시각으로 간주합니다.</div>
+    <div class="step-block">
+      <ol class="steps">
+        <li>건조 다 된 수건 정리
+          <div class="tip">바디 타월은 3등분으로 접은 다음 돌돌 말아서 화장실 수납장 중간에 4개씩 배치</div>
+          <div class="tip">페이스 타월은 2등분으로 접은 다음 돌돌 말아서 화장실 수납장 위쪽에는 6개, 아래쪽 왼쪽에 2개 배치</div>
+          <div class="tip">수납장에 다 배치하고 수건이 남는다면 거실 중앙 서랍장 왼쪽 서랍에 넣는다.</div>
+        </li>
+        <li>거울 닦기
+          <div class="tip">세탁실 물류창고 선반에 걸려있는 파란 수건은 거울닦기 전용. 싱크대 중앙 하부장의 큰 박스를 열어보면 파란색 유리세정제가 있음. 그걸 살짝 뿌려가며 숙소의 모든 거울을 닦는다. 특히 화장실.</div>
+        </li>
+        <li>바닥 물걸레질
+          <div class="tip">물걸레질하면서 나오는 먼지 뭉치들은 다시 청소기로 제거</div>
+        </li>
+        <li>거실 식탁 테이블 위에 올려놨던 의자를 다시 내리고, 화병과 휴대폰 거치대 1개를 다시 놓는다.</li>
+        <li>일반 쓰레기통·재활용 쓰레기통에 싱크대 중간 하부장에 있는 50리터 비닐을 고정시킨다.</li>
+        <li>화장실 2개의 휴지통과 싱크대의 음식물 쓰레기통은 같은 하부장에 있는 10리터 비닐을 고정한다.
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <img class="guide-img" src="img/26.jpg" alt="쓰레기통 비닐 고정 26" style="width:50%;border-radius:11px">
+            <img class="guide-img" src="img/27.png" alt="쓰레기통 비닐 고정 27" style="width:50%;border-radius:11px">
+          </div>
+        </li>
+        <li>안방 화장실은 최대한 열어놓고, 거실 화장실은 약간만 열어놓는다. 화장실 슬리퍼는 슬리퍼 거치대에 걸어놓는다.</li>
+        <li>리모컨이 거치대(거치대는 전부 전등 스위치 옆에 있음)에 다 걸려있는지 확인한다.</li>
+        <li>거실과 주방의 무드등을 켜고 나머지 전등은 전부 전원 off 한다.</li>
+      </ol>
+    </div>
   </section>
 
   <footer class="footer">
